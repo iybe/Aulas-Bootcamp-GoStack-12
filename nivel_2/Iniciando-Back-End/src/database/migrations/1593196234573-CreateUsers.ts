@@ -9,13 +9,17 @@ export class CreateUsers1593196234573 implements MigrationInterface {
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
           },
           {
             name: 'name',
+            type: 'varchar',
+          },
+          {
+            name: 'password',
             type: 'varchar',
           },
           {
@@ -29,7 +33,7 @@ export class CreateUsers1593196234573 implements MigrationInterface {
             default: 'now()'
           },
           {
-            name: 'update_at',
+            name: 'updated_at',
             type: 'timestamp',
             default: 'now()'
           },
