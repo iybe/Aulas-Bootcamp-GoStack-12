@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 import backgoundImage from '../../assets/cadastro-background.png';
@@ -9,14 +9,33 @@ export const Container = styled.div`
   display: flex;
   align-self: stretch;
 `;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  place-content: center;
   width: 100%;
   max-width: 700px;
+`;
+
+const appearFromRight = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+export const AnimationContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-content: center;
+
+  animation: ${appearFromRight} 1.5s;
 
   form {
     margin: 80px 0;
@@ -41,7 +60,7 @@ export const Content = styled.div`
   }
 
   > a {
-    color: #fff;
+    color: #ff9000;
     display: block;
     margin-top: 24px;
     text-decoration: none;
@@ -59,7 +78,6 @@ export const Content = styled.div`
     }
   }
 `;
-
 export const Background = styled.div`
   flex: 1;
   background: url(${backgoundImage}) no-repeat center;
