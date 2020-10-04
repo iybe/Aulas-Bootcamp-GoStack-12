@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import multer from 'multer';
 
-import CreateUserService from '../services/CreateUserService';
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
-import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import ensureAuthenticated from '../../middlewares/ensureAuthenticated';
+import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
 
-import uploadConfig from '../config/upload';
+import uploadConfig from '@config/upload';
 
 const usersRouter = Router();
 const upload = multer(uploadConfig);
@@ -22,7 +22,7 @@ usersRouter.post('/',async (request, response) => {
       password
     });
 
-    delete user.password;
+    user.password = "";
 
     return response.json(user);
   } catch (err){
@@ -42,9 +42,10 @@ usersRouter.patch('/avatar',
         avatarFilename: request.file.filename
       });
 
-      delete user.password;
+      let userResponse = user;
+      userResponse.password = "";
 
-      return response.json(user);
+      return response.json(userResponse);
   }
 );
 

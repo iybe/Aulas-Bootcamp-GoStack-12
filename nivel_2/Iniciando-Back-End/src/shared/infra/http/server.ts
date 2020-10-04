@@ -5,10 +5,9 @@ import 'express-async-errors';
 import cors from 'cors';
 
 import routes from './routes';
-import uploadConfig from './config/upload';
+import uploadConfig from '@config/upload';
 
-import './database/index';
-import AppError from './Errors/AppError';
+import AppError from '@shared/Errors/AppError';
 
 const app = express();
 
